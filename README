@@ -1,0 +1,22 @@
+DotFiles
+========
+
+
+Issues
+~~~~~~
+
+Under ish:
+----------
+
+Repeat doesn't work for hjkl which is a bit anoying in vim....
+maybe: https://stackoverflow.com/questions/39972335/how-do-i-press-and-hold-a-key-and-have-it-repeat-in-vscode
+
+Fonts: Powerline fonts are needed for airline/tmuxline
+       On ipad OS this is a bit of a pain.
+       Use ifont app to produce a profile with the .ttf which can be installed.
+       ish requires the font to be marked as monospace to show in the browser.
+
+Black: It is possible for pip and black master to get out of sync.  If this
+	   happens and causes problems we can install the latest python module
+	   with:
+	     pip3 install --upgrade git+https://github.com/psf/black.git

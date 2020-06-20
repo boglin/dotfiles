@@ -1,0 +1,176 @@
+" My vimrc
+
+""""""""
+" Basics
+
+" We don't need to be compatible with vi
+set nocompatible
+packadd vim-sensible
+
+" Enable per-filetype specialisations
+" filetype plugin on
+
+set encoding=utf-8 " Necessary to show Unicode glyphs
+
+" Tabs
+set tabstop=4       " number of visual spaces per TAB
+set shiftwidth=4    " 
+set softtabstop=4   " number of spaces in tab when editing
+set noexpandtab     " Don't expand tabs with spaces by default
+
+""""""""
+" Behvaiour
+
+set clipboard=exclude:.*
+
+set hlsearch        " Highlight search results
+set wildmenu        " Show options for command completion
+set lazyredraw      " redraw only when we need to.
+
+set textwidth=80
+
+""""""""
+" Navigation
+
+" For smaller keyboards without escape
+" (Note: also map caplock but, muscle memory...)
+inoremap <silent> § <esc>
+
+" Natural window navigation (ctrl-h/j/k/l moves between splits)
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Tabs
+nnoremap <silent> <S-Left> :tabp<CR>
+nnoremap <silent> <S-Right> :tabn<CR>
+
+
+""""""""
+" Behavior: Fugitive
+
+packadd vim-fugitive
+
+""""""""
+" Appearance
+"
+
+" Set up the look of the editor
+packadd vim-colors-solarized
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+colorscheme solarized
+
+" Highlight matching braces etc
+set showmatch
+
+highlight MyLineTooLongMarker ctermbg=magenta guibg=Magenta
+call matchadd('MyLineTooLongMarker', '\%80v', 100)
+
+" Leave some context when scrolling
+set scrolloff=2
+
+" Toggle line numbers
+nnoremap <silent> <F2>  :set number!<CR>
+
+" Reveal codes
+set listchars=trail:·,precedes:«,extends:»,tab:»\ ,eol:¶
+nnoremap <silent> <F11> :set list!<CR>
+
+" Disable mode feedback, it is in the statusline
+set noshowmode
+
+
+" tmuxline is available for generating tmux status lines:
+"  packadd tmuxline.vim
+"  Tmuxline lightline
+"  Tmuxsnapshot ~/.tmux/tmuxline.conf
+
+
+"""""
+" File browser
+
+" NERDTree is available
+" (but generally gets in the way more than being helpful)
+" packadd nerdtree
+
+" Instead, use Tim Pope's extensions to netrw
+packadd vim-vinegar
+
+""""""""
+" Extensions: Gundo
+
+" Help gundo find python
+if has('python3')
+    let g:gundo_prefer_python3 = 1
+endif
+map <C-r> :packadd gundo.vim<CR>:GundoToggle<CR>
+
+
+" Languages
+
+packadd ale
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+
+packadd lightline-ale
+
+let g:lightline = {
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left':  [[ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [['lineinfo'],
+      \             ['percent'],
+      \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+      \             ['fileformat', 'fileencoding', 'filetype']]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+" Load and configure lightline
+packadd lightline.vim
+
+
+" Python
+autocmd BufWritePre *.py call SavePython()
+function SavePython()
+    packadd black
+    execute ':Black'
+endfunction
+
+
+
+" One time only.....
+" Put these lines at the very end of your vimrc file.
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+" packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+" silent! helptags ALL

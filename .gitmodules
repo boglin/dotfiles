@@ -1,0 +1,33 @@
+[submodule "vim/pack/sjl/start/gundo.vim"]
+	path = vim/pack/sjl/opt/gundo.vim
+	url = https://github.com/sjl/gundo.vim.git/
+[submodule "vim/pack/altercation/start/vim-colors-solarized"]
+	path = vim/pack/altercation/opt/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/pack/perservim/opt/nerdtree"]
+	path = vim/pack/perservim/opt/nerdtree
+	url = https://github.com/preservim/nerdtree
+[submodule "vim/pack/tpope/start/vim-fugitive"]
+	path = vim/pack/tpope/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/pack/itchyny/opt/lightline.vim"]
+	path = vim/pack/itchyny/opt/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/pack/tpope/opt/vim-vinegar"]
+	path = vim/pack/tpope/opt/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "vim/pack/edoklev/opt/tmuxline.vim"]
+	path = vim/pack/edoklev/opt/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim.git
+[submodule "vim/pack/tpope/opt/vim-sensible"]
+	path = vim/pack/tpope/opt/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "vim/pack/psf/opt/black"]
+	path = vim/pack/psf/opt/black
+	url = https://github.com/psf/black.git
+[submodule "vim/pack/dense-analysis/opt/ale"]
+	path = vim/pack/dense-analysis/opt/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "vim/pack/maximbaz/opt/lightline-ale"]
+	path = vim/pack/maximbaz/opt/lightline-ale
+	url = https://github.com/maximbaz/lightline-ale.git
