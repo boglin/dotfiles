@@ -31,3 +31,9 @@
 [submodule "vim/pack/maximbaz/opt/lightline-ale"]
 	path = vim/pack/maximbaz/opt/lightline-ale
 	url = https://github.com/maximbaz/lightline-ale.git
+[submodule "vim/pack/tpope/opt/vim-eunuch"]
+	path = vim/pack/tpope/opt/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "vim/pack/ap/opt/vim-css-color"]
+	path = vim/pack/ap/opt/vim-css-color
+	url = https://github.com/ap/vim-css-color.git

@@ -109,7 +109,12 @@ endif
 map <C-r> :packadd gundo.vim<CR>:GundoToggle<CR>
 
 
+# Add a few more natural management commands
+packadd vim-eunuch
+
 " Languages
+
+packadd vim-css-color
 
 packadd ale
 
